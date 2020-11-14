@@ -1,0 +1,57 @@
+import pandas
+from nba_api.stats.static import teams
+from nba_api.stats.endpoints import teamgamelog
+from nba_api.stats.endpoints import boxscoresummaryv2
+
+class nba_teamgame:
+    
+    def __init__(self, name, year):
+        
+        self.name = name
+        self.year = year
+    
+    def team_id(self):
+        team_dict = teams.get_teams()
+        nbagame = [team for team in team_dict if team["full_name"] == self.name][0]
+        nba_id = nbagame["id"]
+        self.num = nba_id
+
+    def team_gamelist(self):
+        nbagamelist = teamgamelog.TeamGameLog(season=self.year, season_type_all_star="Regular Season", team_id=self.num)
+        nbagamedata = nbagamelist.team_game_log.get_data_frame()
+        return nbagamedata[["Game_ID", "MATCHUP"]]
+    
+class nba_gamestats:
+    
+    def __init__(self, gameid):
+        self.gameid = gameid
+    
+    def nbagame_info(self):
+        nbabasic = boxscoresummaryv2.BoxScoreSummaryV2(game_id=self.gameid)
+        nbagame = nbabasic.game_info.get_data_frame()
+        nbagameinfo = nbagame[['GAME_DATE', 'ATTENDANCE']]
+        return nbagameinfo
+    
+    def nbagame_summary(self):
+        nbasummary = boxscoresummaryv2.BoxScoreSummaryV2(game_id=self.gameid)
+        nbasum = nbasummary.line_score.get_data_frame()
+        nbasummaryinfo = nbasum[['TEAM_ABBREVIATION', 'PTS_QTR1', 'PTS_QTR2', 'PTS_QTR3', 'PTS_QTR4', 'PTS']]
+        return nbasummaryinfo
+
+
+
+if __name__ == "__main__":
+    
+    nbateam = input("Enter NBA Team: ")
+    nbaseason = input("Enter NBA Season: ")
+    nbagameid = input("Enter NBA Game_ID: ")
+
+    nbag = nba_teamgame(nbateam, nbaseason)
+    nbag.team_id()
+    print(nbag.team_gamelist())
+    
+    nbatwo = nba_gamestats(nbagameid)
+    print(nbatwo.nbagame_info())
+    print(nbatwo.nbagame_summary())
+
+    
