@@ -1,40 +1,45 @@
-# INST326_ProjectNBA
+# NBA Score Visualizer Program (INST 326 - Group 7)
+### _Group Members : Matthew Makonnen, Connor Beaudoin, Moses Nyirinkindi, Eric Evan Topmiller_
 
-Overview of the project.  
-The goal of our project is to create a sports visualization hub that generates NBA box score visualizations.
+### Introduction
+- The NBA Score Visualizer Program is a visualization application (python program) that allows users to access and generate data visualizations of various components of the Box Score for different NBA matchups. 
 
-Scope of the project.  
-Generate box score (data) visualizations based on the user’s choice of NBA matchup. The program itself will have a GUI along with a search feature to help aid the user.
+### How To Run The Program
 
-Project breakdown and division of labor.   
-Program (Software Components):  
-Data Search/Wrangling - Moses Nyirinkindi  
-Data Visualization (Matthew Makonnen)  
-GUI (User’s Interface/Input) - Connor Beaudoin  
-Unit tests -Eric Topmiller  
+Packages to install before running the program files:
+- pandas
+- matplotlib
+- tkinter
+- nba_api (https://github.com/swar/nba_api)
 
-Non-Programming Tasks:  
-		- Docstrings  
-		- Documentation  
- 
-Meetings and communication.   
-Meeting place: Google Meet  
-Date/Time: Tuesday’s at 10:00 AM  
-Calendar invites will be sent out to each member of the group which will show when the meeting will be along with the Google Meet information.  
-Schedule and milestones.   
+Steps of running the program (_nba_project.py_):
+1. Download the _nba_project.py_ python file.
+2. Open and run the downloaded file through the Command Prompt (CMD). 
+3. Enter the NBA Team Full-Name (Ex: Chicago Bulls).
+4. Enter the NBA Season/Year (Ex: 2012).
+5. Find the specific NBA matchup you want to see and copy the Game_ID (Ex: 0029700076) that is next to the matchup.
+6. Paste the Game_ID to where it states "Enter NBA Game_ID: ".
 
-Project’s internal milestones (Code-Portion) (Duration):  
-Project 50% - Chosen Dataset (NBA’s Box Score): Nov.3   
-Project 75% - Python Code (50% Completed): Nov.17  
-Project 100% - Python Code Successfully Run (w/Unit Tests Final & Docstrings Included): Dec.1  
-Project’s internal milestones (Presentation-Portion) (Duration):  
-Presentation (Written Documentation (PDF)): 2 weeks before Dec.14  
-Presentation (Video): 1 week before Dec.14  
- 
- 
-Bibliography.   
-Source:  
-https://towardsdatascience.com/pretending-to-know-about-the-nba-using-python-699177a58685  
-http://nba.papiotis.info/2020-10-11/MIAvsLAL  
-https://www.oreilly.com/library/view/python-for-data/9781449323592/  
- 
+Steps of running the program (_nbaproject_gui_v2.py_):
+1. Download both the _nba_project.py_ and _nbaproject_gui_v2.py_ python files in the same folder.
+2. Open and run the downloaded file _nbaproject_gui_v2.py_ from the folder through the Command Prompt (CMD).
+3. Enter the NBA Team Full-Name (Ex: Chicago Bulls).
+4. Enter the NBA Season/Year (Ex: 2012).
+5. Find the specific NBA matchup you want to see and copy the Game_ID (Ex: 0029700076) that is next to the matchup.
+6. Paste the Game_ID to where it states "Enter NBA Game_ID: " on the GUI window.
+7. Click one of the buttons to generate the specific visualization regarding the NBA matchup (before clicking the other buttons, close the current plot and then click the other button.). 
+
+### How To Interpret The Output Of The Program
+
+- The main goal of the NBA Score Visualizer Program is to provide users (NBA fans) access to an in-depth analysis of different NBA matches, without the hassle of reading or sighting complex box score layouts.
+- When running the program, the output of the various graphical visualizations and plots varies in interpretation. Here is the rundown of the visualizations' outputted when running the NBA Score Visualizer Program.
+  - __Box-Score:__ A line-plot that showcases the quarter-by-quarter NBA scoreboard for the specific matchup.
+  - __Score Leaders:__ A bar-chart that showcases the top five scorers (point leaders) of the specific NBA matchup.
+  - __Rebound Leaders:__ A bar-chart that showcases the top five rebounders (rebound leaders) of the specific NBA matchup.
+  - __Assist Leaders:__ A bar-chart that showcases the top five assisters (assist leaders) of the specific NBA matchup.
+
+### Annotated Bibliography
+
+Swar. “Swar/nba_api.” GitHub, github.com/swar/nba_api. 
+  
+> Swar's nba_api is an API package that extracts various up-to-date basketball (NBA) box score stats, ranging from a franchise's amount of NBA finals appearance to a listing of NBA players that shoot 90 percent from the 3pt line, from the NBA.com website. With the main goal of the program being to provide users (NBA fans) access to an in-depth analysis of different NBA matches (without the hassle of reading or sighting complex box score layouts), the use of static and endpoint functions within the API helped extract the essential NBA insights and stats needed to produce the information for the program.
